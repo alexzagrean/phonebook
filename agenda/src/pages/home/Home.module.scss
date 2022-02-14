@@ -1,0 +1,29 @@
+.wrapper {
+    flex: 1;
+    padding: 1rem 2rem;
+    .header-wrapper {
+        align-items: center;
+        display: flex;
+        .add-new-button {
+            margin-left: 2rem;
+        }
+        .input {
+            input {
+                padding: 0.5rem;
+            }
+            label {
+                margin-top: -0.4rem;
+            }
+        }
+        .company-select {
+            margin-left: auto;
+            margin-right: 2rem;
+            div {
+                padding: 0.25rem;
+            }
+            label {
+                margin-top: -0.4rem;
+            }
+        }
+    }
+}

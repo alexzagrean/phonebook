@@ -1,0 +1,18 @@
+.dialog-content {
+    padding-top: 1rem !important;
+    .row {
+        display: flex;
+        margin-bottom: 1rem;
+        min-width: 10rem;
+        .input {
+            flex: 1;
+            margin-right: 1rem;
+            &:nth-last-of-type(1) {
+                margin-right: 0;
+            }
+        }
+    }
+}
+.buttons-wrapper {
+    padding: 1rem 1rem !important;
+}
