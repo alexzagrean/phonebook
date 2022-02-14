@@ -1,6 +1,6 @@
 // Pacakges
 import React, { FunctionComponent, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 //Models
 import { Row } from "../../components/Table/TableComponent.model";
@@ -11,9 +11,12 @@ import { ContactsService } from "../../services/ContactsService";
 // Styles
 import styles from "./ViewContact.module.scss";
 
+//Material
+import ArrowBack from "@mui/icons-material/ArrowBack";
+
 const ViewContact: FunctionComponent = (): JSX.Element => {
   const params = useParams();
-
+  const navigate = useNavigate();
   const [contact, setContact] = useState<Row | undefined>();
 
   useEffect(() => {
@@ -30,6 +33,7 @@ const ViewContact: FunctionComponent = (): JSX.Element => {
   return (
     <div className={styles.wrapper}>
       <div className={styles["header-wrapper"]}>
+        <ArrowBack onClick={() => navigate("/")} className={styles["back-icon"]} />
         <h1>{`${contact?.firstName} ${contact?.lastName} - ${contact?.phoneNumber}`}</h1>
       </div>
       <div className={styles.content}>

@@ -76,7 +76,7 @@ const Home: FunctionComponent = (): JSX.Element => {
         let index = newRows.findIndex((element) => element.id === newEntry.id);
         newRows[index] = newEntry;
         setRows(newRows);
-      } else setRows([...rows, newEntry]);
+      } else setRows([...rows, { ...newEntry, id: rows.length.toString() }]);
     }
     setNewEntry({
       firstName: "",
