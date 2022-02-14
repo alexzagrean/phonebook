@@ -16,7 +16,7 @@ export const mocks: Row[] = [
   {
     firstName: "Alex",
     lastName: "Zagrean",
-    company: "BusyMachines",
+    company: "Busy Machines",
     phoneNumber: "0722012212",
     notes: "mock",
     id: "1",
@@ -24,7 +24,7 @@ export const mocks: Row[] = [
   {
     firstName: "George",
     lastName: "Sartian",
-    company: "BusyMachines",
+    company: "Blueprint",
     phoneNumber: "0722012212",
     notes: "mock",
     id: "2",
@@ -32,7 +32,7 @@ export const mocks: Row[] = [
   {
     firstName: "Bianca",
     lastName: "Lozan",
-    company: "BusyMachines",
+    company: "Alcatel",
     phoneNumber: "0722012212",
     notes: "mock",
     id: "3",

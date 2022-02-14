@@ -137,7 +137,7 @@ const Home: FunctionComponent = (): JSX.Element => {
             onChange={handleChangeOnCompanyFilter}
             label="Company"
           >
-            <MenuItem value={""}>Select company...</MenuItem>
+            <MenuItem value={""}>All</MenuItem>
             {rows
               .filter((element, index) => rows.findIndex((el) => el.company === element.company) === index)
               .map((element) => (
