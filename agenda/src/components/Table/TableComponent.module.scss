@@ -1,8 +1,8 @@
 @import "../../../public/assets/styles/colors.scss";
 
 .wrapper {
-    box-shadow: none !important;
     border-radius: 0.3rem;
+    box-shadow: none !important;
     thead {
         background-color: $catskill-white;
         text-transform: uppercase;

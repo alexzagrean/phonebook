@@ -1,0 +1,15 @@
+@import "../../../public/assets/styles/colors.scss";
+
+.wrapper {
+    align-items: center;
+    background-color: $black-haze;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: center;
+    p {
+        color: $mariner;
+        cursor: pointer;
+        text-decoration: underline;
+    }
+}

@@ -1,6 +1,11 @@
+//Components
 import EditIcon from "@mui/icons-material/Edit";
 import { Button } from "@mui/material";
+
+//Configs
 import { Config } from "../../components/Table/TableComponent.model";
+
+//Styles
 import styles from "./Home.module.scss";
 
 export const TableConfig: Config = {

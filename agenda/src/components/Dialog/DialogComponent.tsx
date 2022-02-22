@@ -7,10 +7,14 @@ import styles from "./DialogComponent.module.scss";
 //Material
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle } from "@mui/material";
 
-//Models
+//Components
 import { DialogProps } from "./DialogComponent.model";
-import { Row } from "../Table/TableComponent.model";
 import { FormComponent } from "../Form/FormComponent";
+
+//Models
+import { Row } from "../Table/TableComponent.model";
+
+//Configs
 import { fields } from "./Config";
 
 export const DialogComponent = (props: DialogProps): JSX.Element => {

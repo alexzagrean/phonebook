@@ -1,19 +1,19 @@
 export interface ButtonProps {
-  rows: Row[];
-  onClickRow?: (id: string) => void;
-  onClickHeaderCell?: (key: keyof Row | "") => void;
-  onClickCell?: (key: keyof Row | "", id: string) => void;
-  sorting?: Sorting;
   config: Config;
+  onClickCell?: (key: keyof Row | "", id: string) => void;
+  onClickHeaderCell?: (key: keyof Row | "") => void;
+  onClickRow?: (id: string) => void;
+  rows: Row[];
+  sorting?: Sorting;
 }
 
 export interface Row {
-  firstName: string;
-  lastName: string;
   company: string;
-  phoneNumber: string;
-  notes: string;
+  firstName: string;
   id: string;
+  lastName: string;
+  notes: string;
+  phoneNumber: string;
 }
 
 export interface Sorting {
@@ -26,7 +26,7 @@ export interface Config {
 }
 
 export interface Field {
-  name: keyof Row | "";
   label: string;
+  name: keyof Row | "";
   renderContent?: () => JSX.Element;
 }

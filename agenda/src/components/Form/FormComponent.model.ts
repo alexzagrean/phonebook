@@ -1,14 +1,14 @@
 export interface FormProps {
-  onSubmit: (value: any) => void;
   fields: Field[];
+  onSubmit: (value: any) => void;
   value?: any;
 }
 
 export interface Field {
-  name: string;
   defaultValue?: string;
-  label: string;
   flex?: number;
+  label: string;
+  name: string;
   required?: boolean;
   validation?: ValidationType;
 }

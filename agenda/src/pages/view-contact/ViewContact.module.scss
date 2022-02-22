@@ -3,12 +3,12 @@
 .wrapper {
     flex: 1;
     .header-wrapper {
-        padding: 4rem 6rem;
+        align-items: center;
         background-color: $black-haze;
-        position: relative;
         border-bottom-right-radius: 10rem;
         display: flex;
-        align-items: center;
+        padding: 4rem 6rem;
+        position: relative;
         h1 {
             margin: 0.2rem 0;
         }
@@ -16,10 +16,10 @@
             margin: 0 1rem;
         }
         .back-icon {
+            cursor: pointer;
+            left: 2rem;
             position: absolute;
             top: 2rem;
-            left: 2rem;
-            cursor: pointer;
         }
     }
     .content {
@@ -46,11 +46,11 @@
 @media screen and (max-width: 640px) {
     .wrapper {
         .header-wrapper {
-            padding: 0;
             flex-direction: column;
             justify-content: center;
-            text-align: center;
+            padding: 0;
             padding: 2rem;
+            text-align: center;
             .back-icon {
                 display: none;
             }
@@ -59,11 +59,11 @@
             }
         }
         .content {
-            padding: 4rem 0;
+            align-items: center;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center;
+            padding: 4rem 0;
         }
     }
 }

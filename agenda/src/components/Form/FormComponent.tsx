@@ -1,13 +1,17 @@
 // Packages
 import React from "react";
 
+//Components
+import { TextField } from "@mui/material";
+import { Controller, useForm } from "react-hook-form";
+
 // Styles
 import styles from "./FormComponent.module.scss";
 
 //Models
 import { Field, FormProps, ValidationType } from "./FormComponent.model";
-import { Controller, useForm } from "react-hook-form";
-import { TextField } from "@mui/material";
+
+//Utils
 import validator from "validator";
 
 export const FormComponent = (props: FormProps): JSX.Element => {
@@ -15,24 +19,24 @@ export const FormComponent = (props: FormProps): JSX.Element => {
   const renderInput = (field: Field) => {
     return (
       <Controller
+        control={control}
+        defaultValue={props.value && props.value[field.name]}
         name={field.name}
         rules={{
           required: { value: field.required === true, message: "This field is mandatory" },
           validate: { value: (value) => validateField(value, field.validation) || "This field is invalid" },
         }}
-        control={control}
-        defaultValue={props.value && props.value[field.name]}
         render={({ field: { onChange, value, ref }, formState: { errors } }) => {
           return (
             <TextField
-              label={field.label}
-              variant="outlined"
               className={styles.fullWidth}
-              ref={ref}
-              value={value || ""}
-              onChange={onChange}
               error={errors[field.name] !== undefined}
               helperText={errors[field.name] ? errors[field.name].message : undefined}
+              label={field.label}
+              onChange={onChange}
+              ref={ref}
+              value={value || ""}
+              variant="outlined"
             />
           );
         }}

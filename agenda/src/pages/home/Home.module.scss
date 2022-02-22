@@ -1,9 +1,9 @@
 @import "../../../public/assets/styles/colors.scss";
 
 .wrapper {
+    background-color: $black-haze;
     flex: 1;
     padding: 2rem 3rem;
-    background-color: $black-haze;
     .header-wrapper {
         align-items: center;
         display: flex;
@@ -12,8 +12,8 @@
             margin-left: 2rem;
         }
         .plus-button {
-            display: none;
             color: $san-marino;
+            display: none;
         }
         .filters-wrapper {
             align-items: center;
@@ -32,8 +32,8 @@
             }
             .company-select {
                 background-color: white;
-                margin-right: 2rem;
                 margin-left: 1rem;
+                margin-right: 2rem;
                 div {
                     padding: 0.25rem;
                 }
@@ -53,19 +53,19 @@
         }
     }
     .no-results {
-        text-align: center;
         color: $comet;
         font-size: 1rem;
         padding: 2rem 0;
+        text-align: center;
         word-break: break-word;
     }
 }
 
 .edit-button {
-    display: flex;
     align-items: center;
-    padding: 0.2rem 0.5rem !important;
+    display: flex;
     float: right;
+    padding: 0.2rem 0.5rem !important;
     svg {
         margin-left: 0.5rem;
     }
@@ -75,8 +75,8 @@
     .header-wrapper {
         flex-wrap: wrap;
         .filters-wrapper {
-            width: 100%;
             margin: 1rem 0;
+            width: 100%;
         }
     }
 }
@@ -85,9 +85,9 @@
     .wrapper {
         .header-wrapper {
             .filters-wrapper {
+                align-items: flex-start;
                 display: flex;
                 flex-direction: column;
-                align-items: flex-start;
                 margin: 0;
                 div,
                 p {
@@ -95,8 +95,8 @@
                 }
                 .input,
                 .company-select {
-                    width: 100%;
                     margin: 0.8rem 0;
+                    width: 100%;
                 }
             }
         }

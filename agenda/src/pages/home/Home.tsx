@@ -15,6 +15,7 @@ import {
   SelectChangeEvent,
 } from "@mui/material";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
+
 //Components
 import { DialogComponent } from "../../components/Dialog/DialogComponent";
 import { TableComponent } from "../../components/Table/TableComponent";
@@ -33,12 +34,12 @@ import styles from "./Home.module.scss";
 const Home: FunctionComponent = (): JSX.Element => {
   const [open, setOpen] = useState(false);
   const [newEntry, setNewEntry] = useState<Row>({
-    firstName: "",
-    lastName: "",
     company: "",
-    phoneNumber: "",
-    notes: "",
+    firstName: "",
     id: "",
+    lastName: "",
+    notes: "",
+    phoneNumber: "",
   });
   const [rows, setRows] = useState<Row[]>([]);
   const [searchValue, setSearchValue] = useState("");
@@ -88,12 +89,12 @@ const Home: FunctionComponent = (): JSX.Element => {
       } else setRows([...rows, { ...value, id: (rows.length + 1).toString() }]);
     }
     setNewEntry({
-      firstName: "",
-      lastName: "",
       company: "",
-      phoneNumber: "",
-      notes: "",
+      firstName: "",
       id: "",
+      lastName: "",
+      notes: "",
+      phoneNumber: "",
     });
     setOpen(false);
   };
@@ -155,11 +156,11 @@ const Home: FunctionComponent = (): JSX.Element => {
           <FormControl sx={{ m: 1, minWidth: 180 }} className={styles["company-select"]}>
             <InputLabel id="company-select">Company</InputLabel>
             <Select
-              labelId="company-select"
               id="demo-simple-select-autowidth"
-              value={companyFilter}
-              onChange={handleChangeOnCompanyFilter}
               label="Company"
+              labelId="company-select"
+              onChange={handleChangeOnCompanyFilter}
+              value={companyFilter}
             >
               <MenuItem value={""}>All</MenuItem>
               {rows
@@ -174,10 +175,10 @@ const Home: FunctionComponent = (): JSX.Element => {
           <FormControl variant="outlined" className={styles["input"]}>
             <InputLabel htmlFor="search-input">Search Contact</InputLabel>
             <OutlinedInput
+              id="search-input"
+              label="Search Contact"
               onChange={handleChangeOnSearch}
               value={searchValue}
-              label="Search Contact"
-              id="search-input"
               endAdornment={
                 <InputAdornment position="end">
                   <Search />
@@ -192,12 +193,12 @@ const Home: FunctionComponent = (): JSX.Element => {
       </div>
       {filteredRows.length > 0 ? (
         <TableComponent
-          rows={filteredRows}
+          config={TableConfig}
           onClickCell={handleClickOnEdit}
           onClickHeaderCell={handleClickOnHeaderCell}
           onClickRow={handleClickOnTableRow}
+          rows={filteredRows}
           sorting={sorting}
-          config={TableConfig}
         />
       ) : searchValue ? (
         <div className={styles["no-results"]}>No results found for "{searchValue}"</div>
