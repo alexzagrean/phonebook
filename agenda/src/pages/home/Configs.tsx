@@ -1,5 +1,7 @@
 import EditIcon from "@mui/icons-material/Edit";
+import { Button } from "@mui/material";
 import { Config } from "../../components/Table/TableComponent.model";
+import styles from "./Home.module.scss";
 
 export const TableConfig: Config = {
   fields: [
@@ -27,7 +29,12 @@ export const TableConfig: Config = {
       name: "",
       label: "",
       renderContent: (): JSX.Element => {
-        return <EditIcon />;
+        return (
+          <Button variant="outlined" className={styles["edit-button"]}>
+            Edit
+            <EditIcon fontSize={"small"} />
+          </Button>
+        );
       },
     },
   ],

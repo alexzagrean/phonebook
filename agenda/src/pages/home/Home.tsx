@@ -3,12 +3,22 @@ import React, { FunctionComponent, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 //Material
-import { Button, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent, TextField } from "@mui/material";
+import {
+  Button,
+  FormControl,
+  InputAdornment,
+  InputLabel,
+  MenuItem,
+  OutlinedInput,
+  Select,
+  SelectChangeEvent,
+} from "@mui/material";
 
 //Components
 import { DialogComponent } from "../../components/Dialog/DialogComponent";
 import { TableComponent } from "../../components/Table/TableComponent";
 import { Row, Sorting } from "../../components/Table/TableComponent.model";
+import Search from "@mui/icons-material/Search";
 
 //Configs
 import { TableConfig } from "./Configs";
@@ -42,7 +52,6 @@ const Home: FunctionComponent = (): JSX.Element => {
   useEffect(() => {
     const fetchData = async () => {
       let data = await ContactsService.getContacts();
-      console.log(data);
       if (data) setRows([...data]);
     };
     fetchData();
@@ -68,15 +77,14 @@ const Home: FunctionComponent = (): JSX.Element => {
     setNewEntry({ ...newEntry, [field]: value });
   };
 
-  const handleDialogClose = (action: "submit" | "cancel") => {
-    console.log(newEntry);
+  const handleDialogClose = (action: "submit" | "cancel", value?: any) => {
     if (action === "submit") {
-      if (newEntry.id) {
+      if (value.id) {
         let newRows = [...rows];
-        let index = newRows.findIndex((element) => element.id === newEntry.id);
-        newRows[index] = newEntry;
+        let index = newRows.findIndex((element) => element.id === value.id);
+        newRows[index] = value;
         setRows(newRows);
-      } else setRows([...rows, { ...newEntry, id: rows.length.toString() }]);
+      } else setRows([...rows, { ...value, id: (rows.length + 1).toString() }]);
     }
     setNewEntry({
       firstName: "",
@@ -112,13 +120,23 @@ const Home: FunctionComponent = (): JSX.Element => {
   };
 
   const handleClickOnTableRow = (id: string) => {
-    console.log(id);
     navigate(`/view-contact/${id}`);
   };
 
   const handleChangeOnCompanyFilter = (event: SelectChangeEvent<string>) => {
     setCompanyFilter(event.target.value);
   };
+
+  const handleClickOnClearAll = () => {
+    setCompanyFilter("");
+    setSearchValue("");
+  };
+
+  const filteredRows = rows.filter(
+    (element) =>
+      `${element.firstName} ${element.lastName}`.toLowerCase().includes(searchValue.toLowerCase()) &&
+      (companyFilter === "" || element.company === companyFilter)
+  );
 
   return (
     <div className={styles.wrapper}>
@@ -128,47 +146,60 @@ const Home: FunctionComponent = (): JSX.Element => {
         <Button variant="contained" onClick={handleClickOnAddNew} className={styles["add-new-button"]}>
           Add new
         </Button>
-        <FormControl sx={{ m: 1, minWidth: 180 }} className={styles["company-select"]}>
-          <InputLabel id="company-select">Company</InputLabel>
-          <Select
-            labelId="company-select"
-            id="demo-simple-select-autowidth"
-            value={companyFilter}
-            onChange={handleChangeOnCompanyFilter}
-            label="Company"
-          >
-            <MenuItem value={""}>All</MenuItem>
-            {rows
-              .filter((element, index) => rows.findIndex((el) => el.company === element.company) === index)
-              .map((element) => (
-                <MenuItem value={element.company} key={element.company}>
-                  {element.company}
-                </MenuItem>
-              ))}
-          </Select>
-        </FormControl>
-
-        <TextField
-          label="Search Contact"
-          variant="outlined"
-          className={styles["input"]}
-          onChange={handleChangeOnSearch}
-          type="search"
-          value={searchValue}
-        />
+        <div className={styles["filters-wrapper"]}>
+          <p>Filter by:</p>
+          <FormControl sx={{ m: 1, minWidth: 180 }} className={styles["company-select"]}>
+            <InputLabel id="company-select">Company</InputLabel>
+            <Select
+              labelId="company-select"
+              id="demo-simple-select-autowidth"
+              value={companyFilter}
+              onChange={handleChangeOnCompanyFilter}
+              label="Company"
+            >
+              <MenuItem value={""}>All</MenuItem>
+              {rows
+                .filter((element, index) => rows.findIndex((el) => el.company === element.company) === index)
+                .map((element) => (
+                  <MenuItem value={element.company} key={element.company}>
+                    {element.company}
+                  </MenuItem>
+                ))}
+            </Select>
+          </FormControl>
+          <FormControl variant="outlined" className={styles["input"]}>
+            <InputLabel htmlFor="search-input">Search Contact</InputLabel>
+            <OutlinedInput
+              onChange={handleChangeOnSearch}
+              value={searchValue}
+              label="Search Contact"
+              id="search-input"
+              endAdornment={
+                <InputAdornment position="end">
+                  <Search />
+                </InputAdornment>
+              }
+            />
+          </FormControl>
+          <p className={styles["clear-all"]} onClick={handleClickOnClearAll}>
+            Clear all
+          </p>
+        </div>
       </div>
-      <TableComponent
-        rows={rows.filter(
-          (element) =>
-            `${element.firstName} ${element.lastName}`.toLowerCase().includes(searchValue.toLowerCase()) &&
-            (companyFilter === "" || element.company === companyFilter)
-        )}
-        onClickCell={handleClickOnEdit}
-        onClickHeaderCell={handleClickOnHeaderCell}
-        onClickRow={handleClickOnTableRow}
-        sorting={sorting}
-        config={TableConfig}
-      />
+      {filteredRows.length > 0 ? (
+        <TableComponent
+          rows={filteredRows}
+          onClickCell={handleClickOnEdit}
+          onClickHeaderCell={handleClickOnHeaderCell}
+          onClickRow={handleClickOnTableRow}
+          sorting={sorting}
+          config={TableConfig}
+        />
+      ) : searchValue ? (
+        <div className={styles["no-results"]}>No results found for "{searchValue}"</div>
+      ) : (
+        <div className={styles["no-results"]}>No contacts found</div>
+      )}
     </div>
   );
 };

@@ -1,26 +1,35 @@
+@import "../../../public/assets/styles/colors.scss";
+
 .wrapper {
     flex: 1;
-    padding: 1rem 2rem;
-    .back-icon {
-        cursor: pointer;
+    .header-wrapper {
+        padding: 4rem 6rem;
+        background-color: $black-haze;
+        position: relative;
+        border-bottom-right-radius: 10rem;
+        .back-icon {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            cursor: pointer;
+        }
     }
     .content {
-        padding: 1rem;
-        .row {
-            align-items: center;
-            display: flex;
-            margin-bottom: 1rem;
+        padding: 4rem 10rem;
+        .field-wrapper {
+            margin-bottom: 2rem;
             .label {
-                color: gray;
-                font-size: 1rem;
+                color: $cadet-blue;
+                font-size: 0.9rem;
                 font-weight: 600;
                 text-transform: uppercase;
                 width: 10rem;
             }
             .value {
-                font-size: 1.4rem;
+                font-size: 1.2rem;
                 font-weight: 500;
                 margin-left: 1rem;
+                margin-top: 0.5rem;
             }
         }
     }

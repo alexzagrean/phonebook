@@ -1,0 +1,19 @@
+@import "../../../public/assets/styles/colors.scss";
+
+.wrapper {
+    box-shadow: none !important;
+    border-radius: 0.3rem;
+    thead {
+        background-color: $catskill-white;
+        text-transform: uppercase;
+        th {
+            span {
+                color: $comet;
+                font-size: 0.8rem;
+            }
+        }
+    }
+    .cell {
+        position: relative;
+    }
+}

@@ -1,0 +1,25 @@
+@import "../../../public/assets/styles/colors.scss";
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    .field {
+        margin-bottom: 1rem;
+        .fullWidth {
+            width: 100%;
+        }
+    }
+}
+
+.flex1 {
+    width: 100%;
+}
+
+.flex2 {
+    width: calc(50% - 0.5rem);
+}
+
+.flex3 {
+    width: calc(33.33% - 1.5rem);
+}

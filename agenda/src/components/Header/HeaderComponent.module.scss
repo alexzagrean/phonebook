@@ -1,6 +1,8 @@
+@import "../../../public/assets/styles/colors.scss";
+
 .wrapper {
-    background-color: #3f50b5;
     color: white;
+    background-color: $san-marino;
     padding: 2rem 1rem;
     width: 10rem;
 }

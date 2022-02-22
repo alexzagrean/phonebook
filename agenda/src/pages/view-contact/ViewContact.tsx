@@ -1,5 +1,5 @@
 // Pacakges
-import React, { FunctionComponent, useEffect, useState } from "react";
+import React, { FunctionComponent, useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 //Models
@@ -15,6 +15,7 @@ import styles from "./ViewContact.module.scss";
 import ArrowBack from "@mui/icons-material/ArrowBack";
 
 const ViewContact: FunctionComponent = (): JSX.Element => {
+  const ref = useRef(null);
   const params = useParams();
   const navigate = useNavigate();
   const [contact, setContact] = useState<Row | undefined>();
@@ -29,31 +30,30 @@ const ViewContact: FunctionComponent = (): JSX.Element => {
     };
     fetchData();
   }, [params]);
-
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.wrapper} ref={ref}>
       <div className={styles["header-wrapper"]}>
         <ArrowBack onClick={() => navigate("/")} className={styles["back-icon"]} />
         <h1>{`${contact?.firstName} ${contact?.lastName} - ${contact?.phoneNumber}`}</h1>
       </div>
       <div className={styles.content}>
-        <div className={styles.row}>
+        <div className={styles["field-wrapper"]}>
           <div className={styles.label}>First Name</div>
           <div className={styles.value}>{contact?.firstName}</div>
         </div>
-        <div className={styles.row}>
+        <div className={styles["field-wrapper"]}>
           <div className={styles.label}>Last Name</div>
           <div className={styles.value}>{contact?.lastName}</div>
         </div>
-        <div className={styles.row}>
+        <div className={styles["field-wrapper"]}>
           <div className={styles.label}>Company</div>
           <div className={styles.value}>{contact?.company}</div>
         </div>
-        <div className={styles.row}>
+        <div className={styles["field-wrapper"]}>
           <div className={styles.label}>Phone number</div>
           <div className={styles.value}>{contact?.phoneNumber}</div>
         </div>
-        <div className={styles.row}>
+        <div className={styles["field-wrapper"]}>
           <div className={styles.label}>Notes</div>
           <div className={styles.value}>{contact?.notes}</div>
         </div>

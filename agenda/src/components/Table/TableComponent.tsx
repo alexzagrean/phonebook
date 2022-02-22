@@ -15,6 +15,9 @@ import {
 } from "@mui/material";
 
 // Styles
+import styles from "./TableComponent.module.scss";
+
+//Models
 import { ButtonProps, Row, Sorting } from "./TableComponent.model";
 
 export const TableComponent = (props: ButtonProps): JSX.Element => {
@@ -25,7 +28,6 @@ export const TableComponent = (props: ButtonProps): JSX.Element => {
   }, [props.sorting]);
 
   const handleClickOnRow = (id: string) => {
-    console.log("table", id);
     props.onClickRow && props.onClickRow(id);
   };
   const handleClickOnHeaderCell = (key: keyof Row | "") => {
@@ -36,7 +38,7 @@ export const TableComponent = (props: ButtonProps): JSX.Element => {
     props.onClickCell && props.onClickCell(key, id);
   };
   return (
-    <TableContainer component={Paper}>
+    <TableContainer component={Paper} className={styles.wrapper}>
       <Table>
         <TableHead>
           <TableRow>
@@ -62,7 +64,11 @@ export const TableComponent = (props: ButtonProps): JSX.Element => {
                 hover
               >
                 {props.config.fields.map((field, fieldIndex) => (
-                  <TableCell onClick={handleClickOnCell.bind(null, field.name, row.id)} key={`cell-${field.name}`}>
+                  <TableCell
+                    onClick={handleClickOnCell.bind(null, field.name, row.id)}
+                    key={`cell-${field.name}`}
+                    className={styles.cell}
+                  >
                     {field.name && row[field.name]}
                     {field.renderContent && field.renderContent()}
                   </TableCell>

@@ -1,13 +1,18 @@
+@import "../../../public/assets/styles/colors.scss";
+
 .wrapper {
     flex: 1;
-    padding: 1rem 2rem;
+    padding: 2rem 3rem;
+    background-color: $black-haze;
     .header-wrapper {
         align-items: center;
         display: flex;
+        margin-bottom: 1rem;
         .add-new-button {
             margin-left: 2rem;
         }
         .input {
+            background-color: white;
             input {
                 padding: 0.5rem;
             }
@@ -15,15 +20,48 @@
                 margin-top: -0.4rem;
             }
         }
-        .company-select {
+        .filters-wrapper {
+            align-items: center;
+            display: flex;
             margin-left: auto;
-            margin-right: 2rem;
-            div {
-                padding: 0.25rem;
+            p {
+                color: $cadet-blue;
+                font-size: 1rem;
+                &.clear-all {
+                    color: $mariner;
+                    cursor: pointer;
+                    font-size: 1rem;
+                    margin-left: 1rem;
+                    text-decoration: underline;
+                }
             }
-            label {
-                margin-top: -0.4rem;
+            .company-select {
+                background-color: white;
+                margin-right: 2rem;
+                margin-left: 1rem;
+                div {
+                    padding: 0.25rem;
+                }
+                label {
+                    margin-top: -0.4rem;
+                }
             }
         }
+    }
+    .no-results {
+        text-align: center;
+        color: $comet;
+        font-size: 1rem;
+        padding: 2rem 0;
+    }
+}
+
+.edit-button {
+    display: flex;
+    align-items: center;
+    padding: 0.2rem 0.5rem !important;
+    float: right;
+    svg {
+        margin-left: 0.5rem;
     }
 }
