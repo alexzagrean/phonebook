@@ -34,7 +34,9 @@ const ViewContact: FunctionComponent = (): JSX.Element => {
     <div className={styles.wrapper} ref={ref}>
       <div className={styles["header-wrapper"]}>
         <ArrowBack onClick={() => navigate("/")} className={styles["back-icon"]} />
-        <h1>{`${contact?.firstName} ${contact?.lastName} - ${contact?.phoneNumber}`}</h1>
+        <h1>{`${contact?.firstName} ${contact?.lastName}`}</h1>
+        <span className={styles.separator}>-</span>
+        <h1>{`${contact?.phoneNumber}`}</h1>
       </div>
       <div className={styles.content}>
         <div className={styles["field-wrapper"]}>

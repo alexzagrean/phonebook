@@ -23,3 +23,11 @@ form {
 .flex3 {
     width: calc(33.33% - 1.5rem);
 }
+
+@media screen and (max-width: 480px) {
+    .form {
+        .field {
+            width: 100%;
+        }
+    }
+}

@@ -7,6 +7,14 @@
         background-color: $black-haze;
         position: relative;
         border-bottom-right-radius: 10rem;
+        display: flex;
+        align-items: center;
+        h1 {
+            margin: 0.2rem 0;
+        }
+        .separator {
+            margin: 0 1rem;
+        }
         .back-icon {
             position: absolute;
             top: 2rem;
@@ -15,7 +23,7 @@
         }
     }
     .content {
-        padding: 4rem 10rem;
+        padding: 4rem 4rem 4rem 10rem;
         .field-wrapper {
             margin-bottom: 2rem;
             .label {
@@ -30,6 +38,41 @@
                 font-weight: 500;
                 margin-left: 1rem;
                 margin-top: 0.5rem;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .wrapper {
+        .header-wrapper {
+            padding: 0;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            .back-icon {
+                display: none;
+            }
+            .separator {
+                display: none;
+            }
+        }
+        .content {
+            padding: 4rem 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .wrapper {
+        .header-wrapper {
+            h1 {
+                font-size: 1.5rem;
             }
         }
     }

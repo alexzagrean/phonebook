@@ -2,7 +2,7 @@
 import React, { FunctionComponent } from "react";
 import { RouteProps, Routes, Route } from "react-router-dom";
 import { HeaderComponent } from "./components/Header/HeaderComponent";
-
+import styles from "./App.module.scss";
 // Routes
 import { routes } from "./routes";
 
@@ -17,7 +17,7 @@ export const App: FunctionComponent = (): JSX.Element => {
   const renderLayout = (): JSX.Element => {
     return (
       <main>
-        <HeaderComponent title="Agenda" />
+        <HeaderComponent title="Agenda" className={styles.header} />
         {renderRoutes()}
       </main>
     );

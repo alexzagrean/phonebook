@@ -11,14 +11,9 @@
         .add-new-button {
             margin-left: 2rem;
         }
-        .input {
-            background-color: white;
-            input {
-                padding: 0.5rem;
-            }
-            label {
-                margin-top: -0.4rem;
-            }
+        .plus-button {
+            display: none;
+            color: $san-marino;
         }
         .filters-wrapper {
             align-items: center;
@@ -46,6 +41,15 @@
                     margin-top: -0.4rem;
                 }
             }
+            .input {
+                background-color: white;
+                input {
+                    padding: 0.5rem;
+                }
+                label {
+                    margin-top: -0.4rem;
+                }
+            }
         }
     }
     .no-results {
@@ -53,6 +57,7 @@
         color: $comet;
         font-size: 1rem;
         padding: 2rem 0;
+        word-break: break-word;
     }
 }
 
@@ -63,5 +68,65 @@
     float: right;
     svg {
         margin-left: 0.5rem;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .header-wrapper {
+        flex-wrap: wrap;
+        .filters-wrapper {
+            width: 100%;
+            margin: 1rem 0;
+        }
+    }
+}
+
+@media screen and (max-width: 760px) {
+    .wrapper {
+        .header-wrapper {
+            .filters-wrapper {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                margin: 0;
+                div,
+                p {
+                    margin-left: 0 !important;
+                }
+                .input,
+                .company-select {
+                    width: 100%;
+                    margin: 0.8rem 0;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .wrapper {
+        .header-wrapper {
+            .plus-button {
+                display: block;
+            }
+            .add-new-button {
+                display: none;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 300px) {
+    .wrapper {
+        .header-wrapper {
+            h1 {
+                font-size: 1.8rem;
+            }
+            .plus-button {
+                svg {
+                    font-size: 1.8rem;
+                }
+            }
+        }
     }
 }

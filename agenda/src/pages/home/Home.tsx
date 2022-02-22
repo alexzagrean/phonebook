@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import {
   Button,
   FormControl,
+  IconButton,
   InputAdornment,
   InputLabel,
   MenuItem,
@@ -13,7 +14,7 @@ import {
   Select,
   SelectChangeEvent,
 } from "@mui/material";
-
+import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 //Components
 import { DialogComponent } from "../../components/Dialog/DialogComponent";
 import { TableComponent } from "../../components/Table/TableComponent";
@@ -146,6 +147,9 @@ const Home: FunctionComponent = (): JSX.Element => {
         <Button variant="contained" onClick={handleClickOnAddNew} className={styles["add-new-button"]}>
           Add new
         </Button>
+        <IconButton className={styles["plus-button"]}>
+          <AddCircleOutlineIcon fontSize="large" />
+        </IconButton>
         <div className={styles["filters-wrapper"]}>
           <p>Filter by:</p>
           <FormControl sx={{ m: 1, minWidth: 180 }} className={styles["company-select"]}>

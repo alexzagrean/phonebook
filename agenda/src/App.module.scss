@@ -1,0 +1,13 @@
+.header {
+  padding: 2rem 1rem;
+  width: 10rem;
+}
+
+@media screen and (max-width: 1050px) {
+  .header {
+    width: auto;
+  }
+  main {
+    flex-direction: column;
+  }
+}
