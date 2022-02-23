@@ -66,6 +66,7 @@
     display: flex;
     float: right;
     padding: 0.2rem 0.5rem !important;
+    word-break: keep-all;
     svg {
         margin-left: 0.5rem;
     }
