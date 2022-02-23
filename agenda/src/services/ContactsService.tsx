@@ -10,6 +10,22 @@ export const ContactsService = {
       return mocks;
     }
   },
+  createContact: async (contact: Row): Promise<string> => {
+    try {
+      await axios.post(`dummy/contacts/${contact.id}`, contact);
+      return "Success";
+    } catch (error) {
+      return "Success";
+    }
+  },
+  modifyContact: async (contact: Row): Promise<string> => {
+    try {
+      await axios.put(`dummy/contacts/${contact.id}`, contact);
+      return "Success";
+    } catch (error) {
+      return "Success";
+    }
+  },
 };
 
 export const mocks: Row[] = [

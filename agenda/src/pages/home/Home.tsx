@@ -79,14 +79,18 @@ const Home: FunctionComponent = (): JSX.Element => {
     setNewEntry({ ...newEntry, [field]: value });
   };
 
-  const handleDialogClose = (action: "submit" | "cancel", value?: any) => {
+  const handleDialogClose = async (action: "submit" | "cancel", value?: any) => {
     if (action === "submit") {
       if (value.id) {
+        await ContactsService.modifyContact(value);
         let newRows = [...rows];
         let index = newRows.findIndex((element) => element.id === value.id);
         newRows[index] = value;
         setRows(newRows);
-      } else setRows([...rows, { ...value, id: (rows.length + 1).toString() }]);
+      } else {
+        await ContactsService.createContact(value);
+        setRows([...rows, { ...value, id: (rows.length + 1).toString() }]);
+      }
     }
     setNewEntry({
       company: "",
